@@ -1,0 +1,3 @@
+rootProject.name = 'HackSweRN'
+
+include ':app'
