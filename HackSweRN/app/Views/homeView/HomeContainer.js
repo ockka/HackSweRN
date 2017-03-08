@@ -17,7 +17,7 @@ export default class HomeContainer extends React.Component {
     )
   }
   openMenu = () => {
-    alert("Menu button pressed!")
+    alert("Menu button pressed!!!")
   }
   goToAbout = () => {
     this.props.navigator.push({

@@ -5,13 +5,13 @@ brew install node
 
 brew install watchman
 
-In HackSweRN folder:
+**In HackSweRN folder:**
 
 npm install
 
 npm install -g react-native-cli
 
-Run:
+**Run:**
 
 react-native run-ios
 
