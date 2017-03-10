@@ -4,42 +4,20 @@ import {
   Text,
   ListView
 } from 'react-native'
+import { connect } from 'react-redux'
 
+const mapStateToProps = (store) => ({
+  users: store.user.users
+})
 
-
-export default class UsersContainer extends React.Component {
+export class UsersContainer extends React.Component {
   constructor() {
     super()
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    this.state = {
-      dataSource: ds.cloneWithRows([]),
-      jsonData: ''
-    }
-  }
-
-
-  getUsersFromApi() {
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    return fetch('https://hack-for-sweden-netlight.herokuapp.com/users')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({
-          jsonData: responseJson,
-          dataSource: ds.cloneWithRows(responseJson)
-        })
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  componentDidMount() {
-    var users = this.getUsersFromApi()
   }
 
   render() {
-    console.log('UsersContainer')
-    console.log(this.state.jsonData)
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    const dataSource = ds.cloneWithRows(this.props.users)
     return (
       <View style={{
         marginTop: 100,
@@ -50,12 +28,12 @@ export default class UsersContainer extends React.Component {
       }}>
         <Text>Users Users Users</Text>
         <ListView
-          dataSource={this.state.dataSource}
+          dataSource={dataSource}
           renderRow={(rowData) => <Text>{rowData.id} {rowData.username}</Text>}
           />
       </View>
     )
   }
-
 }
 
+export default connect(mapStateToProps)(UsersContainer)
