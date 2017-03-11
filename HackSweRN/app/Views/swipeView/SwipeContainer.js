@@ -1,6 +1,11 @@
 import React from 'react';
 import SwipeCards from 'react-native-swipe-cards';
 import Card from '../../components/Card'
+import {
+  View
+} from 'react-native';
+
+import styles from './styles.js';
 
 const Cards = [
   { text: 'Tomato', backgroundColor: 'red' },
@@ -27,14 +32,16 @@ export default class SwipeContainer extends React.Component {
 
   render() {
     return (
-      <SwipeCards
-        cards={this.state.cards}
-        renderCard={(cardData) => <Card {...cardData} />}
-        showYup={true}
-        showNope={true}
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
-        />
+      <View style={styles.container}>
+        <SwipeCards
+          cards={this.state.cards}
+          renderCard={(cardData) => <Card {...cardData} />}
+          showYup={true}
+          showNope={true}
+          handleYup={this.handleYup}
+          handleNope={this.handleNope}
+          />
+      </View>
     )
   }
 }
