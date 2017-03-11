@@ -1,20 +1,32 @@
 import React from 'react';
 import SwipeCards from 'react-native-swipe-cards';
 import Card from '../../components/Card'
+import VideoContainer from '../videoView/VideoContainer'
+import { View, Text } from 'react-native'
+import HomeButton from '../../components/HomeButton';
 
 const Cards = [
   { text: 'Tomato', backgroundColor: 'red' },
-  { text: 'Aubergine', backgroundColor: 'purple' },
-  { text: 'Courgette', backgroundColor: 'green' },
-  { text: 'Blueberry', backgroundColor: 'blue' },
-  { text: 'Umm...', backgroundColor: 'cyan' },
-  { text: 'orange', backgroundColor: 'orange' },
+  { text: 'Aubergine', backgroundColor: 'purple' }
 ]
+
+class NoCard extends React.Component {
+  componentWillMount (){
+    this.props.goToVideo()
+  }
+
+  render() {
+    return (
+      <View>
+      </View>
+    )
+  }
+}
 
 export default class SwipeContainer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {cards: Cards}
+    this.state = { cards: Cards }
   }
 
   handleYup = (card) => {
@@ -25,11 +37,20 @@ export default class SwipeContainer extends React.Component {
     console.log(`Nope for ${card.text}`)
   }
 
+  goToVideo = () => {
+    this.props.navigator.push({
+      name: 'Video',
+      title: 'Video',
+      openMenu: this.openMenu
+    });
+  }
+
   render() {
     return (
       <SwipeCards
         cards={this.state.cards}
         renderCard={(cardData) => <Card {...cardData} />}
+        renderNoMoreCards={() => <NoCard goToVideo={this.goToVideo} />}
         showYup={true}
         showNope={true}
         handleYup={this.handleYup}
