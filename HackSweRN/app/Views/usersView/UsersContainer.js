@@ -7,7 +7,8 @@ import {
 import { connect } from 'react-redux'
 
 const mapStateToProps = (store) => ({
-  users: store.user.users
+  categories: store.categories.categories,
+  user: store.user.users
 })
 
 export class UsersContainer extends React.Component {
@@ -17,7 +18,9 @@ export class UsersContainer extends React.Component {
 
   render() {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    const dataSource = ds.cloneWithRows(this.props.users)
+    const userList = ds.cloneWithRows(this.props.user)
+    const categoriesList = ds.cloneWithRows(this.props.categories)
+
     return (
       <View style={{
         marginTop: 100,
@@ -28,8 +31,12 @@ export class UsersContainer extends React.Component {
       }}>
         <Text>Users Users Users</Text>
         <ListView
-          dataSource={dataSource}
+          dataSource={userList}
           renderRow={(rowData) => <Text>{rowData.id} {rowData.username}</Text>}
+          />
+        <ListView
+          dataSource={categoriesList}
+          renderRow={(rowData) => <Text>{rowData.id} {rowData.name}</Text>}
           />
       </View>
     )

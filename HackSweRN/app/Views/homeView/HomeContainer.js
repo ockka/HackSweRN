@@ -2,17 +2,18 @@ import React from 'react'
 import { View } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import userActions from '../../actions/userActions'
+import networkActions from '../../actions/networkActions'
 import HomeButton from '../../components/HomeButton'
 
 const mapDispatchToProps = (dispatch) => ({
-  userActions: bindActionCreators(userActions, dispatch),
+  networkActions: bindActionCreators(networkActions, dispatch),
   dispatch
 })
 
 export class HomeContainer extends React.Component {
   componentDidMount() {
-    this.props.dispatch(userActions.getUsers())
+    this.props.dispatch(networkActions.getUsers())
+    this.props.dispatch(networkActions.getCategories())
   }
 
   constructor() {
@@ -21,18 +22,18 @@ export class HomeContainer extends React.Component {
   render() {
     return (
       <View>
-        <HomeButton label={'Go To About'} goToAbout={this.goToAbout} />
-        <HomeButton label={'Go To Users'} goToAbout={this.goToUsers} />
+        <HomeButton label={'Go To Video'} goTo={this.goToVideo} />
+        <HomeButton label={'Go To Users'} goTo={this.goToUsers} />
       </View>
     )
   }
   openMenu = () => {
     alert("Menu button pressed!!!")
   }
-  goToAbout = () => {
+  goToVideo = () => {
     this.props.navigator.push({
-      name: 'About',
-      title: 'About',
+      name: 'Video',
+      title: 'Video',
       openMenu: this.openMenu
     });
   }

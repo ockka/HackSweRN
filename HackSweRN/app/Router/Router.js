@@ -10,6 +10,7 @@ import {
 import AboutContainer from '../Views/aboutView/AboutContainer'
 import HomeContainer from '../Views/homeView/HomeContainer'
 import TestContainer from '../Views/usersView/UsersContainer'
+import VideoContainer from '../Views/videoView/VideoContainer'
 
 export default class Router extends Component {
   constructor() {
@@ -48,6 +49,14 @@ export default class Router extends Component {
     if (route.name == 'Users') {
       return (
         <TestContainer
+          navigator={navigator}
+          {...route.passProps}
+          />
+      )
+    }
+    if (route.name == 'Video') {
+      return (
+        <VideoContainer
           navigator={navigator}
           {...route.passProps}
           />
