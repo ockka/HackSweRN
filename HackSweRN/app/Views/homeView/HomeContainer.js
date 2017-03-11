@@ -70,7 +70,7 @@ export class HomeContainer extends React.Component {
         <HomeButton label={'Go To Users'} goTo={this.goToUsers} />
         <HomeButton label={'Go To Swipe'} goTo={this.goToSwipe} />
         <View style={styles.buttonContainer}>
-          <HomeButton label={'Nästa'} goTo={this.nextPage} />
+          <HomeButton label={'Nästa'} goTo={this.nextPage} noBorder />
         </View>
       </View>
     )

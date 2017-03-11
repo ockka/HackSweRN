@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Video from 'react-native-video';
 import HomeButton from '../../components/HomeButton';
+import Videos from '../../assets/videos';
 
 const mapStateToProps = (store) => ({
   area: store.area.area
@@ -46,7 +47,7 @@ export class VideoContainer extends React.Component {
         </View>
         <View style={styles.videoContainer}>
           <Video
-            source={require('../../assets/videos/kungsholmen.mp4')}
+            source={Videos['kungsholmen']}
             style={styles.backgroundVideo}
             rate={1}
             volume={1}

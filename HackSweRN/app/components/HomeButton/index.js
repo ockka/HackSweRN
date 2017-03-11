@@ -8,12 +8,19 @@ import {
 var styles = require('./styles.js')
 
 export default class HomeButton extends React.Component {
+
   render() {
-    const { goTo, label } = this.props;
+
+    const {
+      goTo,
+      label,
+      noBorder
+    } = this.props;
+
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={styles.button}
+          style={styles['button' + (noBorder ? 'NoBorder' : '')]}
           onPress={goTo}>
           <Text>
             {label}
@@ -22,4 +29,5 @@ export default class HomeButton extends React.Component {
       </View>
     )
   }
+
 }
