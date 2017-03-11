@@ -17,9 +17,10 @@ export class UsersContainer extends React.Component {
   }
 
   render() {
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    const userList = ds.cloneWithRows(this.props.user)
-    const categoriesList = ds.cloneWithRows(this.props.categories)
+    const ds1 = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    const userList = ds1.cloneWithRows(this.props.user)
+    const ds2 = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    const categoriesList = ds2.cloneWithRows(this.props.categories)
 
     return (
       <View style={{

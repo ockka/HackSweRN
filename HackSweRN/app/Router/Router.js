@@ -11,6 +11,7 @@ import AboutContainer from '../Views/aboutView/AboutContainer'
 import HomeContainer from '../Views/homeView/HomeContainer'
 import TestContainer from '../Views/usersView/UsersContainer'
 import VideoContainer from '../Views/videoView/VideoContainer'
+import SwipeContainer from '../Views/swipeView/SwipeContainer'
 
 export default class Router extends Component {
   constructor() {
@@ -57,6 +58,14 @@ export default class Router extends Component {
     if (route.name == 'Video') {
       return (
         <VideoContainer
+          navigator={navigator}
+          {...route.passProps}
+          />
+      )
+    }
+    if (route.name == 'Swipe') {
+      return (
+        <SwipeContainer
           navigator={navigator}
           {...route.passProps}
           />

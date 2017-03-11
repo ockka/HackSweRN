@@ -24,6 +24,7 @@ export class HomeContainer extends React.Component {
       <View>
         <HomeButton label={'Go To Video'} goTo={this.goToVideo} />
         <HomeButton label={'Go To Users'} goTo={this.goToUsers} />
+        <HomeButton label={'Go To Swipe'} goTo={this.goToSwipe} />
       </View>
     )
   }
@@ -41,6 +42,13 @@ export class HomeContainer extends React.Component {
     this.props.navigator.push({
       name: 'Users',
       title: 'Users',
+      openMenu: this.openMenu
+    });
+  }
+  goToSwipe = () => {
+    this.props.navigator.push({
+      name: 'Swipe',
+      title: 'Swipe',
       openMenu: this.openMenu
     });
   }
