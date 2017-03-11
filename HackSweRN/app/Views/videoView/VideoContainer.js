@@ -4,15 +4,29 @@ import {
   Text
 } from 'react-native'
 var styles = require('./styles.js');
-
+import networkActions from '../../actions/networkActions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import Video from 'react-native-video';
 import HomeButton from '../../components/HomeButton';
 
-export default class VideoContainer extends React.Component {
+const mapStateToProps = (store) => ({
+  area: store.area.area
+})
 
+const mapDispatchToProps = (dispatch) => ({
+  networkActions: bindActionCreators(networkActions, dispatch),
+  dispatch
+})
+
+export class VideoContainer extends React.Component {
   constructor(props) {
     super(props);
     this.nextPage = this.nextPage.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.dispatch(networkActions.getArea())
   }
 
   nextPage() {
@@ -27,7 +41,7 @@ export default class VideoContainer extends React.Component {
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <Text style={styles.text}>
-            {'Ditt häng är...'}
+            {this.props.area.label}
           </Text>
         </View>
         <View style={styles.videoContainer}>
@@ -37,7 +51,7 @@ export default class VideoContainer extends React.Component {
             rate={1}
             volume={1}
             resizeMode="cover"
-            onEnd={this.onVideoEnd}
+            onEnd={this.nextPage}
             key="video1"
             />
         </View>
@@ -45,12 +59,5 @@ export default class VideoContainer extends React.Component {
       </View>
     )
   }
-
-  onVideoEnd = () => {
-    this.props.navigator.push({
-      name: 'About',
-      title: 'About',
-      openMenu: this.openMenu
-    });
-  }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(VideoContainer)

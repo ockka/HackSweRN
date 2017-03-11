@@ -49,6 +49,29 @@ const networkActions = {
           })
         })
     }
+  },
+    getArea() {
+    return (dispatch) => {
+      dispatch({
+        type: types.GET_AREA,
+        fetching: true
+      })
+      apiCommunicator.postMethod(`${basePath}/areas/calculate`, {"answers":"TBD"})
+        .then((response) => {
+          dispatch({
+            type: types.GET_AREA_SUCCESS,
+            payload: response,
+            fetching: false
+          })
+        })
+        .catch(error => {
+          dispatch({
+            type: types.GENERAL_ERROR_MESSAGE,
+            payload: error,
+            fetching: false
+          })
+        })
+    }
   }
 }
 
