@@ -1,9 +1,15 @@
 import React from 'react'
-import { View } from 'react-native'
+import {
+  View,
+  Text
+} from 'react-native'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import networkActions from '../../actions/networkActions'
-import HomeButton from '../../components/HomeButton'
+
+import HomeButton from '../../components/HomeButton';
+
+import styles from './styles.js';
 
 const mapDispatchToProps = (dispatch) => ({
   networkActions: bindActionCreators(networkActions, dispatch),
@@ -11,8 +17,10 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export class HomeContainer extends React.Component {
-  constructor() {
-    super()
+ constructor(props) {
+    super(props);
+    this.nextPage = this.nextPage.bind(this);
+
   }
   
   componentDidMount() {
@@ -20,18 +28,13 @@ export class HomeContainer extends React.Component {
     this.props.dispatch(networkActions.getCategories())
   }
 
-  render() {
-    return (
-      <View>
-        <HomeButton label={'Go To Video'} goTo={this.goToVideo} />
-        <HomeButton label={'Go To Users'} goTo={this.goToUsers} />
-        <HomeButton label={'Go To Swipe'} goTo={this.goToSwipe} />
-      </View>
-    )
+  nextPage() {
+    this.props.navigator.push({
+      name: 'CategoryMenu',
+      title: 'Category Menu'
+    });
   }
-  openMenu = () => {
-    alert("Menu button pressed!!!")
-  }
+
   goToVideo = () => {
     this.props.navigator.push({
       name: 'Video',
@@ -39,6 +42,7 @@ export class HomeContainer extends React.Component {
       openMenu: this.openMenu
     });
   }
+
   goToUsers = () => {
     this.props.navigator.push({
       name: 'Users',
@@ -53,5 +57,24 @@ export class HomeContainer extends React.Component {
       openMenu: this.openMenu
     });
   }
+
+  render() {
+    return (
+      <View>
+        <View style={styles.textContainer}>
+          <Text>
+            {'Välkommen till Hitta Ditt Häng!'}
+          </Text>
+        </View>
+        <HomeButton label={'Go To Video'} goTo={this.goToVideo} />
+        <HomeButton label={'Go To Users'} goTo={this.goToUsers} />
+        <HomeButton label={'Go To Swipe'} goTo={this.goToSwipe} />
+        <View style={styles.buttonContainer}>
+          <HomeButton label={'Nästa'} goTo={this.nextPage} />
+        </View>
+      </View>
+    )
+  }
+
 }
 export default connect(mapDispatchToProps)(HomeContainer)
