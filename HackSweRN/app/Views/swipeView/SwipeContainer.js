@@ -4,6 +4,9 @@ import Card from '../../components/Card'
 
 import VideoContainer from '../videoView/VideoContainer'
 import { View, Text } from 'react-native'
+import networkActions from '../../actions/networkActions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import styles from './styles.js';
 
@@ -16,7 +19,7 @@ class NoCard extends React.Component {
   componentWillMount (){
     this.props.goToVideo()
   }
-
+  
   render() {
     return (
       <View>
@@ -24,8 +27,12 @@ class NoCard extends React.Component {
     )
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  networkActions: bindActionCreators(networkActions, dispatch),
+  dispatch
+})
 
-export default class SwipeContainer extends React.Component {
+export class SwipeContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = { cards: Cards }
@@ -40,6 +47,8 @@ export default class SwipeContainer extends React.Component {
   }
 
   goToVideo = () => {
+    this.props.dispatch(networkActions.postArea())
+
     this.props.navigator.push({
       name: 'Video',
       title: 'Video',
@@ -63,3 +72,4 @@ export default class SwipeContainer extends React.Component {
     )
   }
 }
+export default connect(mapDispatchToProps)(SwipeContainer)

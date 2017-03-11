@@ -4,8 +4,6 @@ import {
   Text
 } from 'react-native'
 var styles = require('./styles.js');
-import networkActions from '../../actions/networkActions'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Video from 'react-native-video';
 import HomeButton from '../../components/HomeButton';
@@ -15,19 +13,10 @@ const mapStateToProps = (store) => ({
   area: store.area.area
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  networkActions: bindActionCreators(networkActions, dispatch),
-  dispatch
-})
-
 export class VideoContainer extends React.Component {
   constructor(props) {
     super(props);
     this.nextPage = this.nextPage.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.dispatch(networkActions.getArea())
   }
 
   nextPage() {
@@ -61,4 +50,4 @@ export class VideoContainer extends React.Component {
     )
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(VideoContainer)
+export default connect(mapStateToProps)(VideoContainer)

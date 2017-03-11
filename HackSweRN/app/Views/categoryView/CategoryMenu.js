@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import networkActions from '../../actions/networkActions';
 import { bindActionCreators } from 'redux';
-const mapDispatchToProps = (dispatch) => ({
-  networkActions: bindActionCreators(networkActions, dispatch),
-  dispatch
-});
+
 const mapStateToProps = (store) => ({
   categories: store.categories.categories
 })
@@ -85,4 +81,4 @@ class CategoryMenu extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryMenu);
+export default connect(mapStateToProps)(CategoryMenu);

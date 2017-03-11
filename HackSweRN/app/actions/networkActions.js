@@ -50,7 +50,7 @@ const networkActions = {
         })
     }
   },
-    getArea() {
+    postArea() {
     return (dispatch) => {
       dispatch({
         type: types.GET_AREA,
