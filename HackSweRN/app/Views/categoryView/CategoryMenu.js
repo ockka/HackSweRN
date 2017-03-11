@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  View,
+  Text
+} from 'react-native';
 import { connect } from 'react-redux';
 import networkActions from '../../actions/networkActions';
 import { bindActionCreators } from 'redux';
@@ -7,36 +11,27 @@ const mapDispatchToProps = (dispatch) => ({
   dispatch
 });
 
-import {
-  View,
-  Text
-} from 'react-native';
-
-import CategoryItem from '../../components/CategoryMenu/CategoryItem.js';
-import HomeButton from '../../components/HomeButton';
-
 import styles from './styles.js';
 
 class CategoryMenu extends Component {
 
   constructor(props) {
     super(props);
-    this.nextPage = this.nextPage.bind(this);
+    this.goToVideo = this.goToVideo.bind(this);
   }
 
-  nextPage() {
+  goToVideo = () => {
     this.props.navigator.push({
-      name: 'Swipe',
-      title: 'Swipe',
+      name: 'Video',
+      title: 'Video',
       openMenu: this.openMenu
     });
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <CategoryItem title={'Natur'} />
-        <HomeButton label={'Next Page'} goTo={this.nextPage} />
+      <View>
+
       </View>
     );
   }
