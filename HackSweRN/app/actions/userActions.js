@@ -1,6 +1,8 @@
 import * as types from '../constants/actionTypes'
 import apiCommunicator from '../api/apiCommunicator'
 
+const basePath = `https://hack-for-sweden-netlight.herokuapp.com`
+
 const userActions = {
   getUsers() {
     return (dispatch) => {
@@ -8,7 +10,7 @@ const userActions = {
         type: types.GET_USERS,
         fetching: true
       })
-      apiCommunicator.getMethod(`https://hack-for-sweden-netlight.herokuapp.com/users`)
+      apiCommunicator.getMethod(`${basePath}/users`)
         .then((response) => {
           dispatch({
             type: types.GET_USERS_SUCCESS,
