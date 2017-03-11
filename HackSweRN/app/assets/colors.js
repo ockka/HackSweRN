@@ -6,5 +6,7 @@ export default colors = {
   blue_green: '#31D8C3',
   platinum: '#E3EFE5',
   amaranth: '#E32949',
-  tiger: '#E39930'
+  tiger: '#E39930',
+  black: '#000000',
+  white: '#ffffff'
 }

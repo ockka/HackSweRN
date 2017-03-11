@@ -22,7 +22,7 @@ export class HomeContainer extends React.Component {
     this.nextPage = this.nextPage.bind(this);
 
   }
-  
+
   componentDidMount() {
     this.props.dispatch(networkActions.getUsers())
     this.props.dispatch(networkActions.getCategories())
@@ -60,7 +60,7 @@ export class HomeContainer extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <View style={styles.textContainer}>
           <Text>
             {'Välkommen till Hitta Ditt Häng!'}

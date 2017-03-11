@@ -1,9 +1,11 @@
 import React from 'react';
 import SwipeCards from 'react-native-swipe-cards';
 import Card from '../../components/Card'
+
 import VideoContainer from '../videoView/VideoContainer'
 import { View, Text } from 'react-native'
-import HomeButton from '../../components/HomeButton';
+
+import styles from './styles.js';
 
 const Cards = [
   { text: 'Tomato', backgroundColor: 'red' },
@@ -47,15 +49,17 @@ export default class SwipeContainer extends React.Component {
 
   render() {
     return (
-      <SwipeCards
-        cards={this.state.cards}
-        renderCard={(cardData) => <Card {...cardData} />}
-        renderNoMoreCards={() => <NoCard goToVideo={this.goToVideo} />}
-        showYup={true}
-        showNope={true}
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
-        />
+      <View style={styles.container}>
+        <SwipeCards
+          cards={this.state.cards}
+          renderCard={(cardData) => <Card {...cardData} />}
+          renderNoMoreCards={() => <NoCard goToVideo={this.goToVideo} />}
+          showYup={true}
+          showNope={true}
+          handleYup={this.handleYup}
+          handleNope={this.handleNope}
+          />
+      </View>
     )
   }
 }
