@@ -77,7 +77,7 @@ class CategoryMenu extends Component {
                 key={i} />
             );
           })}
-          <HomeButton label={'Next Page'} goTo={this.nextPage} />
+          {this.nrOfToggledCats === 4 && <HomeButton label={'Next Page'} goTo={this.nextPage} />}
         </View>
       </View>
     );

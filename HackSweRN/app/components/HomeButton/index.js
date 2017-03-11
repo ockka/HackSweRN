@@ -22,7 +22,7 @@ export default class HomeButton extends React.Component {
         <TouchableOpacity
           style={styles['button' + (noBorder ? 'NoBorder' : '')]}
           onPress={goTo}>
-          <Text>
+          <Text style={styles.text}>
             {label}
           </Text>
         </TouchableOpacity>
