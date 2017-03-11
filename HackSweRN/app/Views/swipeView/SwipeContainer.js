@@ -60,7 +60,7 @@ export class SwipeContainer extends React.Component {
     return (
       <View style={styles.container}>
         <SwipeCards
-          cards={this.state.cards}
+          cards={this.props.selectedCategories}
           renderCard={(cardData) => <Card {...cardData} />}
           renderNoMoreCards={() => <NoCard goToVideo={this.goToVideo} />}
           showYup={true}

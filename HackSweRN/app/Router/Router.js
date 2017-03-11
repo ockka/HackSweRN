@@ -69,6 +69,7 @@ export default class Router extends Component {
       return (
         <SwipeContainer
           navigator={navigator}
+          selectedCategories={route.selectedCategories}
           {...route.passProps}
           />
       )

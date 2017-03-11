@@ -9,7 +9,7 @@ export default class Card extends React.Component {
   render() {
     return (
       <View style={[styles.card, { backgroundColor: this.props.backgroundColor }]}>
-        <Text>{this.props.text}</Text>
+        <Text>{this.props.label}</Text>
       </View>
     )
   }

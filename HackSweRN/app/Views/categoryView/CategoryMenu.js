@@ -33,9 +33,17 @@ class CategoryMenu extends Component {
   }
 
   nextPage() {
+    var selectedCategories = []
+    this.props.categories.forEach((cat) => {
+      if (this.pressedCategories[cat.name]) {
+        selectedCategories.push(cat)
+      }
+    })
+
     this.props.navigator.push({
       name: 'Swipe',
       title: 'Swipe',
+      selectedCategories: selectedCategories,
       openMenu: this.openMenu
     });
   }
