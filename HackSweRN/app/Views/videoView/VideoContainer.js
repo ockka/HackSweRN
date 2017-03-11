@@ -7,6 +7,7 @@ var styles = require('./styles.js');
 
 import Video from 'react-native-video';
 import HomeButton from '../../components/HomeButton';
+import Videos from '../../assets/videos';
 
 export default class VideoContainer extends React.Component {
 
@@ -32,7 +33,7 @@ export default class VideoContainer extends React.Component {
         </View>
         <View style={styles.videoContainer}>
           <Video
-            source={require('../../assets/videos/kungsholmen.mp4')}
+            source={Videos['kungsholmen']}
             style={styles.backgroundVideo}
             rate={1}
             volume={1}

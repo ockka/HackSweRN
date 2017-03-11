@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
+import colors from '../../assets/colors';
 
 module.exports = StyleSheet.create({
   container: {
@@ -8,8 +9,14 @@ module.exports = StyleSheet.create({
     alignItems: 'center'
   },
   button: {
+    alignItems: 'center',
     borderWidth: 1,
     padding: 10,
-    borderColor: 'black'
+    borderRadius: 8,
+    width: 200,
+    borderColor: colors.blue_shade
+  },
+  buttonNoBorder: {
+    padding: 10
   }
 })

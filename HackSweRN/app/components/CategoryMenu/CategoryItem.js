@@ -9,33 +9,35 @@ import {
 import styles from './styles.js';
 
 class CategoryItem extends Component {
+
     constructor(props) {
         super(props);
         this.handleOnPress = this.handleOnPress.bind(this);
+        this.toggled = false;
     }
     handleOnPress() {
-        alert('Button has been pressed!');
+        this.props.onPress(this.props.category);
     }
     render() {
-        const {
-            title
-        } = this.props;
-        if (!title) {
-          Alert.alert('No title for the button..');
-          return false;
-        }
+      if (!this.props.category) {
+        alert('No category for the button..');
+        return false;
+      }
+      var title = this.props.category.label;
 
-        return (
-          <View style={styles.container}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={this.handleOnPress}>
-              <Text>
-                {title}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        );
+      var toggledClass = this.props.toggled ? 'Toggled' : '';
+
+      return (
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles['button' + toggledClass]}
+            onPress={this.handleOnPress}>
+            <Text style={styles.text}>
+              {title}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      );
     }
 }
 

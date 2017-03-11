@@ -7,9 +7,19 @@ module.exports = StyleSheet.create({
     flex: 1
   },
   contentContainer: {
-    marginTop: 100,
+    marginTop: 20,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  textContainer: {
+    marginTop: 100,
+    alignItems: 'center'
+  },
+  text: {
+    fontSize: 30,
+    paddingLeft: 20,
+    paddingRight: 20,
+    color: colors.blue
   }
 })
