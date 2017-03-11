@@ -1,23 +1,40 @@
-import React from 'react'
-import {
-  View,
-  Text,
-} from 'react-native'
+import React from 'react';
+import SwipeCards from 'react-native-swipe-cards';
+import Card from '../../components/Card'
 
-export default class AboutContainer extends React.Component {
-  constructor() {
-    super()
+const Cards = [
+  { text: 'Tomato', backgroundColor: 'red' },
+  { text: 'Aubergine', backgroundColor: 'purple' },
+  { text: 'Courgette', backgroundColor: 'green' },
+  { text: 'Blueberry', backgroundColor: 'blue' },
+  { text: 'Umm...', backgroundColor: 'cyan' },
+  { text: 'orange', backgroundColor: 'orange' },
+]
+
+export default class SwipeContainer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {cards: Cards}
   }
+
+  handleYup = (card) => {
+    console.log(`Yup for ${card.text}`)
+  }
+
+  handleNope = (card) => {
+    console.log(`Nope for ${card.text}`)
+  }
+
   render() {
     return (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        <Text>SwipeContent</Text>
-      </View>
+      <SwipeCards
+        cards={this.state.cards}
+        renderCard={(cardData) => <Card {...cardData} />}
+        showYup={true}
+        showNope={true}
+        handleYup={this.handleYup}
+        handleNope={this.handleNope}
+        />
     )
   }
 }

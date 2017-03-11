@@ -11,14 +11,15 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export class HomeContainer extends React.Component {
+  constructor() {
+    super()
+  }
+  
   componentDidMount() {
     this.props.dispatch(networkActions.getUsers())
     this.props.dispatch(networkActions.getCategories())
   }
 
-  constructor() {
-    super()
-  }
   render() {
     return (
       <View>
