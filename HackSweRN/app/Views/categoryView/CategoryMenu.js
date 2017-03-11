@@ -38,8 +38,8 @@ class CategoryMenu extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.categories.map((cat) => {
-          return <CategoryItem title={cat.name} />
+        {this.props.categories.map((cat, i) => {
+          return <CategoryItem title={cat.name} key={i} />
         })}
         <HomeButton label={'Next Page'} goTo={this.nextPage} />
       </View>

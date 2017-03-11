@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 import {
-  Alert,
   View,
   Text,
   TouchableOpacity
@@ -15,7 +14,7 @@ class CategoryItem extends Component {
         this.handleOnPress = this.handleOnPress.bind(this);
     }
     handleOnPress() {
-        Alert.alert('Button has been pressed!');
+        alert('Button has been pressed!');
     }
     render() {
         const {

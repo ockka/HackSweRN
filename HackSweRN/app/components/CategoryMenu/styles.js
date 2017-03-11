@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import colors from '../../assets/colors';
 
 module.exports = StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ module.exports = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderColor: '#737373',
-    backgroundColor: '#ebebeb',
+    backgroundColor: colors.blue,
     borderRadius: 25,
     width: 300,
     alignItems: 'center'
