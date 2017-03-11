@@ -45,9 +45,9 @@ export class VideoContainer extends React.Component {
             {this.props.area.label}
           </Text>
         </View>
-        <View style={styles.videoContainer}>
+        {this.props.area.id > 0 ? <View style={styles.videoContainer}>
           <Video
-            source={Videos['kungsholmen']}
+            source={Videos[this.props.area.name]}
             style={styles.backgroundVideo}
             rate={1}
             volume={1}
@@ -55,7 +55,7 @@ export class VideoContainer extends React.Component {
             onEnd={this.nextPage}
             key="video1"
             />
-        </View>
+        </View> : null}
         <HomeButton label={'Skip Video'} goTo={this.nextPage} />
       </View>
     )
