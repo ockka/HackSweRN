@@ -3,7 +3,7 @@ import colors from '../../assets/colors';
 
 module.exports = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 20,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
@@ -11,12 +11,15 @@ module.exports = StyleSheet.create({
   button: {
     alignItems: 'center',
     borderWidth: 1,
-    padding: 10,
+    padding: 8,
     borderRadius: 8,
-    width: 200,
-    borderColor: colors.blue_shade
+    width: 150,
+    borderColor: colors.blue
   },
   buttonNoBorder: {
     padding: 10
+  },
+  text: {
+    color: colors.blue
   }
 })

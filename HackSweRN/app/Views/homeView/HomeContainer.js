@@ -62,8 +62,11 @@ export class HomeContainer extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <Text>
-            {'Välkommen till Hitta Ditt Häng!'}
+          <Text style={styles.text}>
+            {'Välkommen till'}
+          </Text>
+          <Text style={styles.textLogo}>
+            {'HITTA DITT HÄNG'}
           </Text>
         </View>
         <HomeButton label={'Go To Video'} goTo={this.goToVideo} />

@@ -12,6 +12,16 @@ module.exports = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  text: {
+    color: colors.blue,
+    fontSize: 20
+  },
+  textLogo: {
+    marginTop: 5,
+    color: colors.blue_green,
+    fontSize: 35,
+    fontWeight: 'bold'
+  },
   buttonContainer: {
     alignItems: 'flex-end'
   }
