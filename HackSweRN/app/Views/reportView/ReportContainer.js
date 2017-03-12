@@ -11,6 +11,7 @@ import styles from './styles.js';
 import MapView from 'react-native-maps';
 import Images from '../../assets/images';
 import HomeButton from '../../components/HomeButton';
+import networkActions from '../../actions/networkActions';
 
 const mapStateToProps = (store) => ({
   area: store.area.area,
@@ -40,60 +41,66 @@ export class ReportContainer extends React.Component {
   }
 
   render() {
+
+    var {
+      areaData
+    } = this.props;
+    var components = areaData.components;
+
     return (
       <ScrollView>
         <View style={styles.container}>
-          {this.props.areaData.id > 0 ?
+          {areaData.id > 0 &&
             <View style={styles.container}>
               <Image
                 style={styles.image}
-                source={Images[this.props.areaData.name]}
+                source={Images[areaData.name]}
                 />
-              <Text style={styles.textHeadline}>{this.props.areaData.label}</Text>
+              <Text style={styles.textHeadline}>{areaData.label}</Text>
               <View style={styles.rowContainer}>
-                <View style={styles.textContainer}>
-                  <Text style={styles.textTitle}>{this.props.areaData.components[0].title}</Text>
-                  <Text style={styles.textNumber}>{this.props.areaData.components[0].value}</Text>
-                </View>
-                <View style={styles.textContainer}>
-                  <Text style={styles.textTitle}>{this.props.areaData.components[1].title}</Text>
-                  <Text style={styles.textNumber}>{this.props.areaData.components[1].value}</Text>
-                </View>
+                {components.length > 0 && <View style={styles.textContainer}>
+                  <Text style={styles.textTitle}>{components[0].title}</Text>
+                  <Text style={styles.textNumber}>{components[0].value}</Text>
+                </View>}
+                {components.length > 1 && <View style={styles.textContainer}>
+                  <Text style={styles.textTitle}>{components[1].title}</Text>
+                  <Text style={styles.textNumber}>{components[1].value}</Text>
+                </View>}
               </View>
               <View style={styles.rowContainer2}>
-                <View style={styles.textContainer}>
-                  <Text style={styles.textTitle}>{this.props.areaData.components[2].title}</Text>
-                  <Text style={styles.textNumber}>{this.props.areaData.components[2].value}</Text>
-                </View>
-                <View style={styles.textContainer}>
-                  <Text style={styles.textTitle}>{this.props.areaData.components[3].title}</Text>
-                  <Text style={styles.textNumber}>{this.props.areaData.components[3].value}</Text>
-                </View>
+                {components.length > 2 && <View style={styles.textContainer}>
+                  <Text style={styles.textTitle}>{components[2].title}</Text>
+                  <Text style={styles.textNumber}>{components[2].value}</Text>
+                </View>}
+                {components.length > 3 && <View style={styles.textContainer}>
+                  <Text style={styles.textTitle}>{components[3].title}</Text>
+                  <Text style={styles.textNumber}>{components[3].value}</Text>
+                </View>}
               </View>
-              <Image
+              {components.length > 4 && <Image
                 style={{ width: '100%', height: 275, marginTop: 20 }}
-                source={{ uri: this.props.areaData.components[4].value }}
-                />
+                source={{ uri: components[4].value }}
+                />}
               <View style={styles.container2}>
                 <MapView
                   style={styles.map}
                   initialRegion={{
-                    latitude: parseFloat(this.props.areaData.latitude),
-                    longitude: parseFloat(this.props.areaData.longitude),
+                    latitude: parseFloat(areaData.latitude),
+                    longitude: parseFloat(areaData.longitude),
                     latitudeDelta: 0.0322,
                     longitudeDelta: 0.0421,
                   }}
                   >
                   <MapView.Marker
                     coordinate={{
-                      latitude: parseFloat(this.props.areaData.latitude),
-                      longitude: parseFloat(this.props.areaData.longitude)
+                      latitude: parseFloat(areaData.latitude),
+                      longitude: parseFloat(areaData.longitude)
                     }}
                     />
                 </MapView>
               </View>
-              <HomeButton label={'Gör en ny sökning'} goTo={this.goToHome} />
-            </View> : null}
+              <HomeButton label={'Gör en ny sökning'} goTo={this.goToHome} style={{ marginBottom: 10 }} />
+            </View>}
         </View>
       </ScrollView>
     )

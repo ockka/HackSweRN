@@ -10,11 +10,6 @@ import { connect } from 'react-redux'
 
 import styles from './styles.js';
 
-// const SelectedCategories = [
-//   { text: 'natur', name: 'natur', label: 'Natur', left: 'Skog', right: 'Park' },
-//   { text: 'bar', name: 'bar', label: 'Bar', left: 'Öl', right: 'Drink' }
-// ]
-
 class NoCard extends React.Component {
   componentWillMount (){
     this.props.goToVideo()

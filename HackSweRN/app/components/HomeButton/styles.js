@@ -6,7 +6,8 @@ module.exports = StyleSheet.create({
     marginTop: 20,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 10
   },
   button: {
     alignItems: 'center',
