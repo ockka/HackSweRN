@@ -7,9 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import AboutContainer from '../Views/aboutView/AboutContainer'
 import HomeContainer from '../Views/homeView/HomeContainer'
-import TestContainer from '../Views/usersView/UsersContainer'
 import VideoContainer from '../Views/videoView/VideoContainer'
 import SwipeContainer from '../Views/swipeView/SwipeContainer'
 import CategoryMenu from '../Views/categoryView/CategoryMenu';
@@ -31,14 +29,6 @@ export default class Router extends Component {
     if (route.name == 'Home') {
       return (
         <HomeContainer
-          navigator={navigator}
-          {...route.passProps}
-          />
-      )
-    }
-    if (route.name == 'About') {
-      return (
-        <AboutContainer
           navigator={navigator}
           {...route.passProps}
           />

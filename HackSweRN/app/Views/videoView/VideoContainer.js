@@ -32,9 +32,10 @@ export class VideoContainer extends React.Component {
       title: 'Report'
     });
   }
-
-  componentDidMount(){
-    this.props.dispatch(networkActions.getArea(this.props.area.id));
+  componentDidUpdate(){
+    if(this.props.area.id > 0){
+      this.props.dispatch(networkActions.getArea(this.props.area.id));
+    }
   }
 
   render() {

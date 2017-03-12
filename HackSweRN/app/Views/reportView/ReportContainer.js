@@ -8,18 +8,12 @@ import {
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import styles from './styles.js';
-import networkActions from '../../actions/networkActions'
 import MapView from 'react-native-maps';
 import Images from '../../assets/images';
 import HomeButton from '../../components/HomeButton';
 
 const mapStateToProps = (store) => ({
   areaData: store.areaData.area
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  networkActions: bindActionCreators(networkActions, dispatch),
-  dispatch
 })
 
 export class ReportContainer extends React.Component {
@@ -35,19 +29,10 @@ export class ReportContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(networkActions.getArea(1));
     this.setState({ areaData: this.props.areaData });
   }
 
   render() {
-    /*
-    var textItem = ''
-    if (this.props.areaData.id > 0) {
-      this.props.areaData.components.forEach((item) => {
-        textItem = item
-      })
-    }
-    */
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -107,4 +92,4 @@ export class ReportContainer extends React.Component {
     )
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ReportContainer)
+export default connect(mapStateToProps)(ReportContainer)
