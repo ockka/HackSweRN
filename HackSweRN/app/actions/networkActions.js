@@ -56,7 +56,7 @@ const networkActions = {
         type: types.GET_AREA,
         fetching: true
       })
-      apiCommunicator.postMethod(`${basePath}/areas/calculate`, {"answers":"TBD"})
+      apiCommunicator.postMethod(`${basePath}/areas/calculate`)
         .then((response) => {
           dispatch({
             type: types.GET_AREA_SUCCESS,

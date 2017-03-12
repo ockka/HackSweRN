@@ -7,7 +7,7 @@ var styles = require('./styles.js');
 import { connect } from 'react-redux'
 import Video from 'react-native-video';
 import HomeButton from '../../components/HomeButton';
-import Videos from '../../assets/videos';
+import { Videos } from '../../assets/videos';
 
 const mapStateToProps = (store) => ({
   area: store.area.area
@@ -27,6 +27,7 @@ export class VideoContainer extends React.Component {
   }
 
   render() {
+    console.log("rendering videoContainer", this.props.area);
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>

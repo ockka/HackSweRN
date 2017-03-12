@@ -1,6 +1,6 @@
 import React from 'react';
-import SwipeCards from 'react-native-swipe-cards';
-import Card from '../../components/Card'
+import SwipeCards from '../../components/Card/SwipeCards';
+import Card from '../../components/Card';
 
 import VideoContainer from '../videoView/VideoContainer'
 import { View, Text } from 'react-native'
@@ -10,21 +10,18 @@ import { connect } from 'react-redux'
 
 import styles from './styles.js';
 
-const Cards = [
-  { text: 'Tomato', backgroundColor: 'red' },
-  { text: 'Aubergine', backgroundColor: 'purple' }
+const SelectedCategories = [
+  { text: 'natur', name: 'natur', label: 'Natur', left: 'Skog', right: 'Park' },
+  { text: 'bar', name: 'bar', label: 'Bar', left: 'Öl', right: 'Drink' }
 ]
 
 class NoCard extends React.Component {
   componentWillMount (){
     this.props.goToVideo()
   }
-  
+
   render() {
-    return (
-      <View>
-      </View>
-    )
+    return false;
   }
 }
 const mapDispatchToProps = (dispatch) => ({
@@ -35,15 +32,15 @@ const mapDispatchToProps = (dispatch) => ({
 export class SwipeContainer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { cards: Cards }
+    this.renderCard = this.renderCard.bind(this);
   }
 
   handleYup = (card) => {
-    console.log(`Yup for ${card.text}`)
+    console.log(`Yup for ${card.label}`)
   }
 
   handleNope = (card) => {
-    console.log(`Nope for ${card.text}`)
+    console.log(`Nope for ${card.label}`)
   }
 
   goToVideo = () => {
@@ -51,25 +48,39 @@ export class SwipeContainer extends React.Component {
 
     this.props.navigator.push({
       name: 'Video',
-      title: 'Video',
-      openMenu: this.openMenu
+      title: 'Video'
     });
+  }
+
+  renderCard(card) {
+    return <Card {...card} />;
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <SwipeCards
-          cards={this.props.selectedCategories}
-          renderCard={(cardData) => <Card {...cardData} />}
-          renderNoMoreCards={() => <NoCard goToVideo={this.goToVideo} />}
-          showYup={true}
-          showNope={true}
-          handleYup={this.handleYup}
-          handleNope={this.handleNope}
-          />
+        <Text style={styles.text}>
+          {'Vad föredrar du?'}
+        </Text>
+        <View style={styles.cardsContainer}>
+          <SwipeCards
+            cards={this.props.selectedCategories}
+            renderCard={this.renderCard}
+            renderNoMoreCards={() => <NoCard goToVideo={this.goToVideo} />}
+            showYup
+            showNope
+            handleYup={this.handleYup}
+            handleNope={this.handleNope}
+            />
+        </View>
       </View>
     )
   }
 }
+
 export default connect(mapDispatchToProps)(SwipeContainer)
+
+// {this.left && this.right && (<View style={styles.choiceContainer}>
+//   <Text style={styles.left}>{this.left}</Text>
+//   <Text style={styles.right}>{this.right}</Text>
+// </View>)}

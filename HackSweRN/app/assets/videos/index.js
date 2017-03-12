@@ -1,3 +1,5 @@
+import colors from '../colors';
+
 const Videos = {
   kungsholmen: require('./kungsholmen.mp4'),
   vasastan: require('./vasastan.mp4'),
@@ -9,3 +11,13 @@ const Videos = {
 };
 
 export default Videos;
+
+export const CardColors = {
+  natur: colors.blue,
+  bar: colors.blue_shade,
+  kultur: colors.amaranth,
+  restaurang: colors.tiger,
+  musik: colors.blue_green,
+  traning: colors.amaranth_shade,
+  stadspuls: colors.blue_green_shade
+};
