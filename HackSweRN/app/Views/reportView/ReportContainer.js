@@ -5,15 +5,10 @@ import {
 } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import networkActions from '../../actions/networkActions'
-
-import HomeButton from '../../components/HomeButton';
-
 import styles from './styles.js';
 
-const mapDispatchToProps = (dispatch) => ({
-  networkActions: bindActionCreators(networkActions, dispatch),
-  dispatch
+const mapStateToProps = (store) => ({
+  area: store.area.area
 })
 
 export class ReportContainer extends React.Component {
@@ -25,9 +20,10 @@ export class ReportContainer extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.text}>{this.props.area.label}</Text>
       </View>
     )
   }
 
 }
-export default connect(mapDispatchToProps)(ReportContainer)
+export default connect(mapStateToProps)(ReportContainer)

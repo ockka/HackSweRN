@@ -5,5 +5,9 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.platinum
+  },
+  text: {
+    fontSize: 30,
+    marginTop: 100
   }
 })

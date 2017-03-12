@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export class HomeContainer extends React.Component {
- constructor(props) {
+  constructor(props) {
     super(props);
     this.nextPage = this.nextPage.bind(this);
 
@@ -57,6 +57,13 @@ export class HomeContainer extends React.Component {
       openMenu: this.openMenu
     });
   }
+  goToReport = () => {
+    this.props.navigator.push({
+      name: 'Report',
+      title: 'Report',
+      openMenu: this.openMenu
+    });
+  }
 
   render() {
     return (
@@ -72,6 +79,7 @@ export class HomeContainer extends React.Component {
         <HomeButton label={'Go To Video'} goTo={this.goToVideo} />
         <HomeButton label={'Go To Users'} goTo={this.goToUsers} />
         <HomeButton label={'Go To Swipe'} goTo={this.goToSwipe} />
+        <HomeButton label={'Go To Report'} goTo={this.goToReport} />
         <View style={styles.buttonContainer}>
           <HomeButton label={'Nästa'} goTo={this.nextPage} noBorder />
         </View>
