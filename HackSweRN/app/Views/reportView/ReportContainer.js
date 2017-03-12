@@ -10,7 +10,8 @@ import { connect } from 'react-redux'
 import styles from './styles.js';
 import networkActions from '../../actions/networkActions'
 import MapView from 'react-native-maps';
-
+import Images from '../../assets/images';
+import HomeButton from '../../components/HomeButton';
 
 const mapStateToProps = (store) => ({
   areaData: store.areaData.area
@@ -24,6 +25,13 @@ const mapDispatchToProps = (dispatch) => ({
 export class ReportContainer extends React.Component {
   constructor(props) {
     super(props);
+  }
+  goToHome = () => {
+    this.props.navigator.push({
+      name: 'Home',
+      title: 'Home',
+      openMenu: this.openMenu
+    });
   }
 
   componentDidMount() {
@@ -47,7 +55,7 @@ export class ReportContainer extends React.Component {
             <View style={styles.container}>
               <Image
                 style={styles.image}
-                source={require('../../assets/images/vasastan.jpg')}
+                source={Images[this.props.areaData.name]}
                 />
               <Text style={styles.textHeadline}>{this.props.areaData.label}</Text>
               <View style={styles.rowContainer}>
@@ -70,6 +78,10 @@ export class ReportContainer extends React.Component {
                   <Text style={styles.textNumber}>{this.props.areaData.components[3].value}</Text>
                 </View>
               </View>
+              <Image
+                style={{ width: '100%', height: 275, marginTop: 20 }}
+                source={{ uri: this.props.areaData.components[4].value }}
+                />
               <View style={styles.container2}>
                 <MapView
                   style={styles.map}
@@ -79,17 +91,20 @@ export class ReportContainer extends React.Component {
                     latitudeDelta: 0.0322,
                     longitudeDelta: 0.0421,
                   }}
-                  />
-                <MapView.Marker
-                  coordinate={{latitude: parseFloat(this.props.areaData.latitude),
-                  longitude: parseFloat(this.props.areaData.longitude)}}
-                  />
+                  >
+                  <MapView.Marker
+                    coordinate={{
+                      latitude: parseFloat(this.props.areaData.latitude),
+                      longitude: parseFloat(this.props.areaData.longitude)
+                    }}
+                    />
+                </MapView>
               </View>
+              <HomeButton label={'Gör en ny sökning'} goTo={this.goToHome} />
             </View> : null}
         </View>
       </ScrollView>
     )
   }
-
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ReportContainer)

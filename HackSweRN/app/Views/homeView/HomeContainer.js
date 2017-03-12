@@ -24,7 +24,6 @@ export class HomeContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(networkActions.getUsers())
     this.props.dispatch(networkActions.getCategories())
   }
 
@@ -35,35 +34,6 @@ export class HomeContainer extends React.Component {
     });
   }
 
-  goToVideo = () => {
-    this.props.navigator.push({
-      name: 'About',
-      title: 'About',
-      openMenu: this.openMenu
-    });
-  }
-
-  goToUsers = () => {
-    this.props.navigator.push({
-      name: 'Users',
-      title: 'Users',
-      openMenu: this.openMenu
-    });
-  }
-  goToSwipe = () => {
-    this.props.navigator.push({
-      name: 'Swipe',
-      title: 'Swipe',
-      openMenu: this.openMenu
-    });
-  }
-  goToReport = () => {
-    this.props.navigator.push({
-      name: 'Report',
-      title: 'Report',
-      openMenu: this.openMenu
-    });
-  }
 
   render() {
     return (

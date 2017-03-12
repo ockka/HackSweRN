@@ -24,11 +24,6 @@ export default class Router extends Component {
       <Navigator
         initialRoute={{ name: 'Home', title: 'Home' }}
         renderScene={this.renderScene}
-        navigationBar={
-          <Navigator.NavigationBar
-            style={styles.navigationBar}
-            routeMapper={NavigationBarRouteMapper} />
-        }
         />
     );
   }
