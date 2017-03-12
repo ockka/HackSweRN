@@ -13,7 +13,13 @@ import Images from '../../assets/images';
 import HomeButton from '../../components/HomeButton';
 
 const mapStateToProps = (store) => ({
+  area: store.area.area,
   areaData: store.areaData.area
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  networkActions: bindActionCreators(networkActions, dispatch),
+  dispatch
 })
 
 export class ReportContainer extends React.Component {
@@ -29,6 +35,7 @@ export class ReportContainer extends React.Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(networkActions.getArea(this.props.area.id));
     this.setState({ areaData: this.props.areaData });
   }
 
@@ -92,4 +99,4 @@ export class ReportContainer extends React.Component {
     )
   }
 }
-export default connect(mapStateToProps)(ReportContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ReportContainer)
