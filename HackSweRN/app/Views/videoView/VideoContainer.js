@@ -8,9 +8,16 @@ import { connect } from 'react-redux'
 import Video from 'react-native-video';
 import HomeButton from '../../components/HomeButton';
 import Videos from '../../assets/videos';
+import networkActions from '../../actions/networkActions'
+import { bindActionCreators } from 'redux'
 
 const mapStateToProps = (store) => ({
   area: store.area.area
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  networkActions: bindActionCreators(networkActions, dispatch),
+  dispatch
 })
 
 export class VideoContainer extends React.Component {
@@ -24,6 +31,10 @@ export class VideoContainer extends React.Component {
       name: 'Report',
       title: 'Report'
     });
+  }
+
+  componentDidMount(){
+    this.props.dispatch(networkActions.getArea(this.props.area.id));
   }
 
   render() {
@@ -51,4 +62,4 @@ export class VideoContainer extends React.Component {
     )
   }
 }
-export default connect(mapStateToProps)(VideoContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(VideoContainer)

@@ -7,11 +7,11 @@ const initialState = {
 const area = (state = initialState, action) => {
 
   switch (action.type) {
-    case types.POST_AREA: {
+    case types.GET_AREA: {
       return {...state, fetching: action.fetching }
     }
 
-    case types.POST_AREA_SUCCESS: {
+    case types.GET_AREA_SUCCESS: {
       return {...state, fetching: action.fetching, area: action.payload}
     }
   }

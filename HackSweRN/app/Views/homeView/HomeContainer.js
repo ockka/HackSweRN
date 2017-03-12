@@ -37,8 +37,8 @@ export class HomeContainer extends React.Component {
 
   goToVideo = () => {
     this.props.navigator.push({
-      name: 'Video',
-      title: 'Video',
+      name: 'About',
+      title: 'About',
       openMenu: this.openMenu
     });
   }
