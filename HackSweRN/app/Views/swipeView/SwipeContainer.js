@@ -10,10 +10,10 @@ import { connect } from 'react-redux'
 
 import styles from './styles.js';
 
-const SelectedCategories = [
-  { text: 'natur', name: 'natur', label: 'Natur', left: 'Skog', right: 'Park' },
-  { text: 'bar', name: 'bar', label: 'Bar', left: 'Öl', right: 'Drink' }
-]
+// const SelectedCategories = [
+//   { text: 'natur', name: 'natur', label: 'Natur', left: 'Skog', right: 'Park' },
+//   { text: 'bar', name: 'bar', label: 'Bar', left: 'Öl', right: 'Drink' }
+// ]
 
 class NoCard extends React.Component {
   componentWillMount (){
@@ -33,18 +33,25 @@ export class SwipeContainer extends React.Component {
   constructor(props) {
     super(props)
     this.renderCard = this.renderCard.bind(this);
+    this.answers = [];
   }
 
   handleYup = (card) => {
-    console.log(`Yup for ${card.label}`)
+    this.answers.push({
+      category_id: card.id,
+      choice: 'right'
+    });
   }
 
   handleNope = (card) => {
-    console.log(`Nope for ${card.label}`)
+    this.answers.push({
+      category_id: card.id,
+      choice: 'left'
+    });
   }
 
   goToVideo = () => {
-    this.props.dispatch(networkActions.postArea())
+    this.props.dispatch(networkActions.postArea(this.answers));
 
     this.props.navigator.push({
       name: 'Video',

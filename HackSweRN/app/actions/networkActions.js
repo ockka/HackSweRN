@@ -50,13 +50,13 @@ const networkActions = {
         })
     }
   },
-    postArea() {
+    postArea(answers) {
     return (dispatch) => {
       dispatch({
         type: types.GET_AREA,
         fetching: true
       })
-      apiCommunicator.postMethod(`${basePath}/areas/calculate`)
+      apiCommunicator.postMethod(`${basePath}/areas/calculate`, { answers: answers })
         .then((response) => {
           dispatch({
             type: types.GET_AREA_SUCCESS,

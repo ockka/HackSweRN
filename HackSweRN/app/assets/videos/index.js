@@ -14,7 +14,7 @@ export default Videos;
 
 export const CardColors = {
   natur: colors.blue,
-  bar: colors.blue_shade,
+  barer: colors.blue_shade,
   kultur: colors.amaranth,
   restaurang: colors.tiger,
   musik: colors.blue_green,
