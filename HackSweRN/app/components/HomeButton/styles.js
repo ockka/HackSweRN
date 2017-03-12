@@ -20,6 +20,7 @@ module.exports = StyleSheet.create({
     padding: 10
   },
   text: {
-    color: colors.blue
+    color: colors.blue,
+    fontFamily: 'Montserrat-Regular'
   }
 })

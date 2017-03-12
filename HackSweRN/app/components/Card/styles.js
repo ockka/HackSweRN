@@ -11,9 +11,11 @@ module.exports = StyleSheet.create({
     alignItems: 'center',
     width: 300,
     height: 300,
+    borderRadius: 5
   },
   text: {
     color: colors.white,
-    fontSize: 40
+    fontSize: 40,
+    fontFamily: 'Montserrat-Regular'
   }
 })

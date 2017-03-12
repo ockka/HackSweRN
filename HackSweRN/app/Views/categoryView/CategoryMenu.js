@@ -68,7 +68,10 @@ class CategoryMenu extends Component {
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <Text style={styles.text}>
-            {'Vilka 4 vill Du ha nära?'}
+            {'Vad är viktigt för Dig att ha nära?'}
+          </Text>
+          <Text style={styles.textDescription}>
+            {'Välj fyra kategorier.'}
           </Text>
         </View>
         <View style={styles.contentContainer}>

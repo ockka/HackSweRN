@@ -33,7 +33,13 @@ export class HomeContainer extends React.Component {
       title: 'Category Menu'
     });
   }
-
+  goToReport = () => {
+    this.props.navigator.push({
+      name: 'Report',
+      title: 'Report',
+      openMenu: this.openMenu
+    });
+  }
 
   render() {
     return (
@@ -45,10 +51,13 @@ export class HomeContainer extends React.Component {
           <Text style={styles.textLogo}>
             {'HITTA DITT HÄNG'}
           </Text>
+          <Text style={styles.textDescription}>
+            {'Stockholm kan kännas stort även för någon som känner till alla områden. ' +
+              'Denna app ger Dig Stockholms områden i din ficka. ' +
+              'Vi presenterar ett område i Stockholm baserat på vår analys av dina preferenser baserat på några få, enkla frågor. ' +
+              'Är du redo att ta reda på vilket fantastiskt område som passar dig bäst?'}
+          </Text>
         </View>
-        <HomeButton label={'Go To Video'} goTo={this.goToVideo} />
-        <HomeButton label={'Go To Users'} goTo={this.goToUsers} />
-        <HomeButton label={'Go To Swipe'} goTo={this.goToSwipe} />
         <HomeButton label={'Go To Report'} goTo={this.goToReport} />
         <View style={styles.buttonContainer}>
           <HomeButton label={'Nästa'} goTo={this.nextPage} noBorder />

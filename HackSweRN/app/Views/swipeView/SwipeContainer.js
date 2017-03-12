@@ -69,6 +69,9 @@ export class SwipeContainer extends React.Component {
         <Text style={styles.text}>
           {'Vad föredrar du?'}
         </Text>
+        <Text style={styles.textDescription}>
+          {'Svep höger eller vänster.'}
+        </Text>
         <View style={styles.cardsContainer}>
           <SwipeCards
             cards={this.props.selectedCategories}

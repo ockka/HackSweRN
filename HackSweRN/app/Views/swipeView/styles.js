@@ -14,7 +14,15 @@ module.exports = StyleSheet.create({
   text: {
     marginTop: 100,
     fontSize: 30,
-    color: colors.blue
+    color: colors.blue,
+    fontFamily: 'Montserrat-Regular'
+  },
+  textDescription: {
+    marginTop: 20,
+    fontSize: 15,
+    color: colors.amaranth,
+    fontFamily: 'Montserrat-Regular',
+    marginBottom: 10
   },
   choiceContainer: {
     flex: 1,
